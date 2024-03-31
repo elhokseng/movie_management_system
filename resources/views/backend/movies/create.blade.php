@@ -9,9 +9,9 @@
             <select class="form-select" aria-label="Default select example">
                 <option selected>Choose Genres</option>
                 @foreach ($genres as $genre)
-                    <option value="{{$genre->id}}">{{$genre->name}}</option>
+                    <option value="{{ $genre->id }}">{{ $genre->name }}</option>
                 @endforeach
-            </select>  
+            </select> 
         </div> --}}
 
         <div class="mb-3">

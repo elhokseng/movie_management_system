@@ -17,9 +17,14 @@ class MovieController extends Controller
 
     public function create()
     {
-        $genres = Genre::select('id', 'name')->get();
-        return view('backend.movies.create',compact('genres'));
+        try {
+            $genres = Genre::select('id', 'name')->get();
+            return view('backend.movies.create', compact('genres'));
+        } catch (\Exception $e) {
+            return back()->withError('Failed to load genres. Please try again later.');
+        }
     }
+    
 
     // Store a new movie
     public function store(Request $request)

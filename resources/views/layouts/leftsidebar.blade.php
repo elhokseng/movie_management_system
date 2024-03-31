@@ -31,6 +31,11 @@
                             Movie
                         </a>    
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#" onclick="showContent('subscription')">
+                            Subscription Plans
+                        </a>    
+                    </li>
                 </ul>   
             </div>
         </nav>
@@ -41,10 +46,13 @@
                 @include('backend.dashboard.dashboard')
             </div>
             <div class="content" id="genre" style="display: none;">
-                @include('backend.create_genres')
+                @include('backend.Genres.list')
             </div>
             <div class="content" id="movie" style="display: none;">
                 @include('backend.movies.create')
+            </div>
+            <div class="content" id="subscription" style="display: none;">
+                @include('backend.Subcription.list')
             </div>
         </main>
     </div>
