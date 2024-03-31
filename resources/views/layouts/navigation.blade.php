@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-4">
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary p-3">
     <div class="container justify-content-center">
         <!-- Search on the left side -->
         <div class="me-auto d-flex flex-grow-1 justify-content-center">
@@ -66,9 +66,8 @@
     </div>
 </nav>
         
-</div>
-
-<div class="container">
+{{-- Banner image slider --}}
+{{-- <div class="container">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -83,7 +82,7 @@
             <img class="d-block w-100" src="https://imgs.search.brave.com/zAwlvmrT0QiOBEVBinp-Rjve54CT50t-7Wx28xztkJY/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9oNy5h/bGFteS5jb20vY29t/cC9UNTNKMkcvY2lu/YW1hLWZpbG0tY29u/Y2VwdC1tb3ZpZS1j/bGFwcGVyLWJvYXJk/LW9uLW9yYW5nZS1j/b2xvci1iYWNrZ3Jv/dW5kLWJhbm5lci1j/b3B5LXNwYWNlLVQ1/M0oyRy5qcGc" alt="Second slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="https://imgs.search.brave.com/HljgBtWcHV2y1ldlQRP3ao2xvocK-qvHRG3zCXPtzb0/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9kMWNz/YXJrejhvYmU5dS5j/bG91ZGZyb250Lm5l/dC9wb3N0ZXJwcmV2/aWV3cy9maWxtLW1v/dmllLW1ha2VyLXlv/dXR1YmUtY2hhbm5l/bC1hcnQtYmFubmVy/LWRlc2lnbi10ZW1w/bGF0ZS00NTJiNTE4/MTUzYWJmYzcxY2E5/MjliOTNlM2ZjMjY3/Zl9zY3JlZW4uanBn/P3RzPTE1ODg1Njgw/ODk" alt="Third slide">
+            <img class="d-block w-100" src="https://imgs.search.brave.com/HljgBt    WcHV2y1ldlQRP3ao2xvocK-qvHRG3zCXPtzb0/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9kMWNz/YXJrejhvYmU5dS5j/bG91ZGZyb250Lm5l/dC9wb3N0ZXJwcmV2/aWV3cy9maWxtLW1v/dmllLW1ha2VyLXlv/dXR1YmUtY2hhbm5l/bC1hcnQtYmFubmVy/LWRlc2lnbi10ZW1w/bGF0ZS00NTJiNTE4/MTUzYWJmYzcxY2E5/MjliOTNlM2ZjMjY3/Zl9zY3JlZW4uanBn/P3RzPTE1ODg1Njgw/ODk" alt="Third slide">
           </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -95,6 +94,7 @@
           <span class="sr-only">Next</span>
         </a>
       </div>   
+
 </div>
-
-
+ --}}
+ 
