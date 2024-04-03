@@ -10,12 +10,12 @@ class GenreController extends Controller
     public function index()
     {
         $genres = Genre::all();
-        return response()->json($genres);
+        return view('backend.Genres.list', ['genres' => $genres]);
     }
 
     public function create()    
     {
-        return view('backend.create_genres');
+        return view('backend.Genres.create');
     }   
 
     public function store(Request $request)

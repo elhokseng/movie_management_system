@@ -17,11 +17,12 @@ return new class extends Migration
             $table->date('release_date');
             $table->integer('duration');
             $table->text('synopsis');
-            $table->unsignedBigInteger('genre_id');
+            $table->unsignedBigInteger('genre_id')->nullable(); // Set to allow null values
             $table->string('poster_url')->nullable();
             $table->foreign('genre_id')->references('id')->on('genres')->onDelete('cascade');
             $table->timestamps();
         });
+        
     }
 
     /**

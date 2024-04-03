@@ -19,17 +19,31 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-}); 
+});
 
 Route::get('/dashboard', function () {
     return view('backend.dashboard.admin');
 })->middleware(['auth', 'verified'])->name('dashboard.index');
 
+
+Route::get('/movie/index', [MovieController::class, 'index'])
+    ->name('movie.index');
 Route::get('/movie/create', [MovieController::class, 'create'])
     ->name('movie.create');
 Route::post('/movie', [MovieController::class, 'store'])
     ->name('movie.store');
+Route::get('/movie/{id}/show', [MovieController::class, 'show'])
+    ->name('movie.show');
+Route::get('/movies/{id}/edit', [MovieController::class, 'edit'])
+    ->name('movies.edit');
+Route::put('/movies/{id}', [MovieController::class, 'update'])
+    ->name('movies.update');
+Route::delete('/movies/{id}', [MovieController::class, 'destroy'])
+    ->name('movies.destroy');
 
+
+Route::get('/genres/index', [GenreController::class, 'index'])
+    ->name('genres.list');
 Route::get('/genres/create', [GenreController::class, 'create'])
     ->name('genres.create');
 Route::post('/genres', [GenreController::class, 'store'])
@@ -37,8 +51,8 @@ Route::post('/genres', [GenreController::class, 'store'])
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update'); 
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-}); 
+});
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

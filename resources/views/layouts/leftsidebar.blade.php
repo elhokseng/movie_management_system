@@ -3,12 +3,18 @@
         <!-- Sidebar -->
         <style>
             .sidebar {
+                width: 30%;
                 height: 100vh;
                 position: fixed;
+                background-color: #343a40; /* Set sidebar background color */
+                color: white; /* Set text color */
+                overflow-y: auto; /* Enable vertical scrolling if content exceeds viewport height */
             }
+        
             .nav-item:hover {
-                background-color: #343a40; /* Change the background color on hover */
+                background-color: #495057; /* Change the background color on hover */
             }
+        
             .nav-link {
                 color: white; /* Change the text color */
             }
@@ -17,75 +23,30 @@
             <div class="position-sticky pt-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#" onclick="showContent('dashboard')">
-                            Dashboard   
+                        <a class="nav-link text-white" href="{{ URL::route('dashboard.index') }}"
+                            onclick="showContent('dashboard')">
+                            Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#" onclick="showContent('genre')">
+                        <a class="nav-link text-white" href="{{ URL::route('genres.list') }}"
+                            onclick="showContent('genre')">
                             Genre
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#" onclick="showContent('movie')">
+                        <a class="nav-link text-white" href="{{ URL::route('movie.index') }}"
+                            onclick="showContent('movie')">
                             Movie
-                        </a>    
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="#" onclick="showContent('subscription')">
                             Subscription Plans
-                        </a>    
+                        </a>
                     </li>
-                </ul>   
+                </ul>
             </div>
         </nav>
-
-        <!-- Main content -->
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <div class="content" id="dashboard" style="display: none;">
-                @include('backend.dashboard.dashboard')
-            </div>
-            <div class="content" id="genre" style="display: none;">
-                @include('backend.Genres.list')
-            </div>
-            <div class="content" id="movie" style="display: none;">
-                @include('backend.movies.create')
-            </div>
-            <div class="content" id="subscription" style="display: none;">
-                @include('backend.Subcription.list')
-            </div>
-        </main>
     </div>
 </div>
-
-<script>
-    function showContent(id) {
-        // Hide all content elements
-        var contents = document.querySelectorAll('.content');
-        contents.forEach(function(content) {
-            content.style.display = 'none';
-        });
-
-        // Show the selected content
-        var selectedContent = document.getElementById(id);
-        selectedContent.style.display = 'block';
-
-        // Remove active class from all nav links
-        var navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(function(link) {
-            link.classList.remove('active');
-        });
-
-        // Add active class to the clicked nav link
-        var clickedLink = document.querySelector(`a[href="#"][onclick*="${id}"]`);
-        clickedLink.classList.add('active');
-    }
-
-    // Show dashboard content when no link is clicked
-    window.addEventListener('DOMContentLoaded', function() {
-        var dashboardLink = document.querySelector('.nav-link[href="#"][onclick*="dashboard"]');
-        dashboardLink.classList.add('active');
-        var dashboardContent = document.getElementById('dashboard');
-        dashboardContent.style.display = 'block';
-    });
-</script>

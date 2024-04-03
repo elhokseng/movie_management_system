@@ -8,25 +8,18 @@ use App\Models\Movie;
 
 class MovieController extends Controller
 {
-    // Display a listing of the movies
     public function index()
     {
-        $movies = Movie::with('genre')->get();
-        return response()->json($movies);
+        $movies = Movie::all();
+        return view('backend.movies.list', compact('movies'));
     }
 
     public function create()
     {
-        try {
-            $genres = Genre::select('id', 'name')->get();
-            return view('backend.movies.create', compact('genres'));
-        } catch (\Exception $e) {
-            return back()->withError('Failed to load genres. Please try again later.');
-        }
+        $genres = Genre::all();
+        return view('backend.movies.create', compact('genres'));
     }
-    
 
-    // Store a new movie
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -35,52 +28,64 @@ class MovieController extends Controller
             'release_date' => 'required|date',
             'duration' => 'required|numeric',
             'synopsis' => 'required',
-            'genre' => 'nullable'
+            'genre_id' => 'nullable|exists:genres,id'
         ]);
 
         if ($request->hasFile('poster_url')) {
-            $fileName = time().'.'.$request->poster_url->extension();  
+            $fileName = time() . '.' . $request->poster_url->extension();
             $request->poster_url->move(public_path('uploads'), $fileName);
-            $validatedData['poster_url'] = 'uploads/' . $fileName;
+            $validated['poster_url'] = 'uploads/' . $fileName;
         }
 
         Movie::create($validated);
 
-        return redirect()->route('movie.create')->with('success', 'Movie details submitted successfully!');
+        return redirect()->route('movie.create')->with('success', 'Movie has been created successfully!');
     }
-    
-    // Show a single movie
-    public function show($id)
+
+    public function show()
     {
-        $movie = Movie::with('genre')->find($id);
-        if(!$movie) {
-            return response()->json(['message' => 'Movie not found'], 404);
-        }
-
-        return response()->json($movie);
+        $movies = Movie::all();
+        return view('backend.movies.view',compact('movies'));
     }
 
-    // Update a movie
+    public function edit($id)
+    {
+        $movies = Movie::findOrFail($id);
+        return view('backend.movies.view', compact('movies'));
+    }
+
     public function update(Request $request, $id)
     {
-        $movie = Movie::find($id);
-        if(!$movie) {
-            return response()->json(['message' => 'Movie not found'], 404);
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'poster_url' => 'nullable|image',
+            'release_date' => 'required|date',
+            'duration' => 'required|numeric',
+            'synopsis' => 'required',
+            'genre_id' => 'nullable|exists:genres,id' // Validate genre_id against the existing genres
+        ]);
+
+        $movie = Movie::findOrFail($id);
+
+        // Update movie details
+        $movie->update($validated);
+
+        // Handle image upload if a new image is provided
+        if ($request->hasFile('poster_url')) {
+            $fileName = time() . '.' . $request->poster_url->extension();
+            $request->poster_url->move(public_path('uploads'), $fileName);
+            $movie->poster_url = 'uploads/' . $fileName;
+            $movie->save();
         }
 
-        $movie->update($request->all());
-        return response()->json($movie);
+        return redirect()->route('movies.index')->with('success', 'Movie has been updated successfully!');
     }
 
-    // Delete a movie
     public function destroy($id)
     {
-        $movie = Movie::find($id);
-        if(!$movie) {
-            return response()->json(['message' => 'Movie not found'], 404);
-        }
-
+        $movie = Movie::findOrFail($id);
         $movie->delete();
-        return response()->json(['message' => 'Movie deleted']);
+
+        return redirect()->route('movies.index')->with('success', 'Movie has been deleted successfully!');
     }
 }
