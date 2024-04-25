@@ -1,11 +1,16 @@
 <?php
 
+use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SubscriptionPlanController;
 
+use App\Models\Movie;
+use App\Models\User;
+use Carbon\Carbon;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,37 +22,37 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [MovieController::class, 'dashboard'])->name('dashboard');
 
 Route::get('/dashboard', function () {
-    return view('backend.dashboard.admin');
+    $totalMovies = Movie::count();
+    $totalUsers = User::count();
+    $newUserThreshold = Carbon::now()->subDays(30);
+    $newUsersCount = User::where('created_at', '>=', $newUserThreshold)->count();
+    return view('backend.dashboard.admin', 
+    compact('totalMovies',
+            'totalUsers',
+            'newUsersCount'));
 })->middleware(['auth', 'verified'])->name('dashboard.index');
 
+Route::get('/movie/index', [MovieController::class, 'index'])->name('movie.index');
+Route::get('/movie/create', [MovieController::class, 'create'])->name('movie.create');
+Route::post('/movie', [MovieController::class, 'store'])->name('movie.store');
+Route::get('/movie/{id}/show', [MovieController::class, 'show'])->name('movie.show');
+Route::get('/movies/{id}/edit', [MovieController::class, 'edit'])->name('movies.edit');
+Route::put('/movies/{id}', [MovieController::class, 'update'])->name('movies.update');
+Route::delete('/movies/{id}', [MovieController::class, 'destroy'])->name('movies.destroy');
 
-Route::get('/movie/index', [MovieController::class, 'index'])
-    ->name('movie.index');
-Route::get('/movie/create', [MovieController::class, 'create'])
-    ->name('movie.create');
-Route::post('/movie', [MovieController::class, 'store'])
-    ->name('movie.store');
-Route::get('/movie/{id}/show', [MovieController::class, 'show'])
-    ->name('movie.show');
-Route::get('/movies/{id}/edit', [MovieController::class, 'edit'])
-    ->name('movies.edit');
-Route::put('/movies/{id}', [MovieController::class, 'update'])
-    ->name('movies.update');
-Route::delete('/movies/{id}', [MovieController::class, 'destroy'])
-    ->name('movies.destroy');
+Route::get('/genres/index', [GenreController::class, 'index'])->name('genres.list');
+Route::get('/genres/create', [GenreController::class, 'create'])->name('genres.create');
+Route::get('/genres/{id}/', [GenreController::class, 'edit'])->name('genres.edit');
+Route::get('/genres/{id}/show', [GenreController::class, 'show'])->name('genres.show');
+Route::post('/genres', [GenreController::class, 'store'])->name('genres.store');
+Route::post('/genres/{id}', [GenreController::class, 'destroy'])->name('genres.destroy');
 
 
-Route::get('/genres/index', [GenreController::class, 'index'])
-    ->name('genres.list');
-Route::get('/genres/create', [GenreController::class, 'create'])
-    ->name('genres.create');
-Route::post('/genres', [GenreController::class, 'store'])
-    ->name('genres.store');
+
+Route::get('/subscription-plans', [SubscriptionPlanController::class, 'index'])->name('subscription-plans.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\SubscriptionPlan;
 
 class User extends Authenticatable
 {
@@ -21,6 +22,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'age',
+        'gender',
+        'phone',
+        'country',
+        'date_of_birth',
+        'profile_picture',
+        'email_verified_at',
+        'usertype',
     ];
 
     /**
@@ -42,4 +51,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    /**
+     * Get the plan associated with the subscription plan.
+     */
+    public function plan()
+    {
+        return $this->belongsTo(SubscriptionPlan::class);
+    }
 }

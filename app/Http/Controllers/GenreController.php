@@ -33,7 +33,11 @@ class GenreController extends Controller
     public function show($id)
     {
         $genre = Genre::find($id);
-        return response()->json($genre);
+        $movies = [];
+        if ($genre) {
+            $movies = $genre->movies;
+        }
+        return view('backend.Genres.view', compact('genre', 'movies'));
     }
 
     public function update(Request $request, $id)

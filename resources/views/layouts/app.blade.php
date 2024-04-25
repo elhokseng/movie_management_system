@@ -13,6 +13,12 @@
 
     {{-- jquery link --}}
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Include Slick CSS -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+
 
     {{-- boostrap file --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -31,9 +37,28 @@
                 padding-right: 2%;
                 margin-top: 1%;
             }
+
+            .box_wrapper {
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                padding: 20px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                background-color: #f9f9f9;
+                margin-top: 3%;
+            }
+
+
             .message_alert {
                 margin-left: 16.6%;
             }
+            .nav-bg{
+              background: #333552;  
+            }
+
+            .bg-color{
+              background: #414362;
+            }
+
         </style>
         {{ $slot ?? null }}
         @if (session('success'))
