@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\dashboardController as ControllersDashboardController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
@@ -22,7 +23,11 @@ use Carbon\Carbon;
 |
 */
 
-Route::get('/', [MovieController::class, 'dashboard'])->name('dashboard');
+Route::get('/', [ControllersDashboardController::class, 'index'])
+    ->name('dashboard');
+
+Route::get('/view/{id}/show', [ControllersDashboardController::class, 'show'])
+    ->name('view.show');
 
 Route::get('/dashboard', function () {
     $totalMovies = Movie::count();
@@ -44,15 +49,14 @@ Route::put('/movies/{id}', [MovieController::class, 'update'])->name('movies.upd
 Route::delete('/movies/{id}', [MovieController::class, 'destroy'])->name('movies.destroy');
 
 Route::get('/genres/index', [GenreController::class, 'index'])->name('genres.list');
-Route::get('/genres/create', [GenreController::class, 'create'])->name('genres.create');
+Route::get('/genres/create', [GenreController::class, 'create'])->name  ('genres.create');
 Route::get('/genres/{id}/', [GenreController::class, 'edit'])->name('genres.edit');
 Route::get('/genres/{id}/show', [GenreController::class, 'show'])->name('genres.show');
 Route::post('/genres', [GenreController::class, 'store'])->name('genres.store');
 Route::post('/genres/{id}', [GenreController::class, 'destroy'])->name('genres.destroy');
 
 
-
-Route::get('/subscription-plans', [SubscriptionPlanController::class, 'index'])->name('subscription-plans.index');
+Route::resource('subscription-plans', SubscriptionPlanController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

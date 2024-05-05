@@ -18,8 +18,6 @@
             .nav-link {
                 color: white; /* Change the text color */
             }
-
-            
           
         </style>
         <nav class="col-md-6 col-lg-2 d-md-block sidebar position-fixed bg-color">
@@ -31,33 +29,34 @@
                     Dashboard
                   </a>
                 </li>
+
                 <li class="nav-item">
                   <a class="nav-link text-white" href="{{ URL::route('genres.list') }}"
                     onclick="showContent('genre')">
                     Genre
                   </a>
                 </li>
+
                 <li class="nav-item">
                   <a class="nav-link text-white" href="{{ URL::route('movie.index') }}"
                     onclick="showContent('movie')">
                     Movie
                   </a>
                 </li>
+
                 <li class="nav-item">
                   <a class="nav-link text-white" href="#"
                     onclick="showContent('booking')">
                     Booking
                   </a>
                 </li>
-                <li class="nav-item dropdown show"> <a class="nav-link dropdown-toggle text-white" href="#" id="subscriptionDropdown" data-bs-toggle="dropdown" aria-expanded="true">
+                
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="{{URL::route('subscription-plans.index')}}"
+                    onclick="showContent('Subscription')">
                     Subscription Plans
                   </a>
-                  <ul class="dropdown-menu text-white bg-dark" aria-labelledby="subscriptionDropdown">
-                    <li class="nav-item"><a class="nav-link text-white" href="">Monthly</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="">Yearly</a></li>
-                  </ul>
                 </li>
-              </ul>
             </div>
         </nav>
     </div>

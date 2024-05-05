@@ -14,16 +14,14 @@ class HomeController extends Controller
             $usertype = Auth()->user()->usertype;
 
 
-            if($usertype == 'user')
+            if($usertype == 'admin')
+            {
+                return view('backend.dashboard.admin');
+                
+            }else
             {
                 return view('dashboard');
             
-            }else if($usertype == 'admin')
-            {
-                return view('dashboard');
-            
-            }else{
-                return redirect()->back();
             }
         }
     }

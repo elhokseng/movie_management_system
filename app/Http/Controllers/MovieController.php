@@ -92,10 +92,4 @@ class MovieController extends Controller
         return redirect()->route('movie.index')->with('success', 'Movie has been deleted successfully!');
     }
 
-    public function dashboard()
-    {
-        
-        $movies = Movie::with('genre')->get();
-        return view('dashboard',compact('movies'));
-    }   
 }

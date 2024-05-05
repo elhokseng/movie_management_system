@@ -1,6 +1,5 @@
 @extends('layouts.app')
-@include('layouts.navigation')
-@include('layouts.leftsidebar')
+@include('layouts.navigation')  
 @section('main')
     <div class="content">
         <div class="box_wrapper">

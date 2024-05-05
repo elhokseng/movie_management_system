@@ -61,11 +61,15 @@
             </div>
             <div class="row">
                 <h1 class="col-md-auto">
-                    Now Coming
+                    <a class="" href="#">
+                        Now Coming
+                    </a>
                 </h1>
                 <h1 class="col-md-auto">|</h1>
                 <h1 class="col">
-                    Coming Soon
+                    <a href="#">
+                        Coming Soon
+                    </a>
                 </h1>
             </div>
     
@@ -73,7 +77,8 @@
                 @foreach ($movies as $movie)
                     <div class="col">
                         <div class="card movie-card" style="width: 19rem;">
-                            <a href="{{ route('movie.show', $movie->id) }}"> <!-- Add anchor tag -->
+                            {{-- {{ route('movie.show', $movie->id) }} --}}
+                            <a href="{{URL::route('view.show', $movie->id)}}"> <!-- Add anchor tag -->
                                 <img src="{{ $movie->poster_url }}" class="card-img-top" alt="Movie Poster">
                             </a> <!-- Close anchor tag -->
                             <div class="card-body">
@@ -87,7 +92,6 @@
                     </div>
                 @endforeach
             </div>
-            
     </div>
         
     @endsection
