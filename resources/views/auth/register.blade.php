@@ -14,7 +14,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-8"> <!-- Increased column size to accommodate two rows -->
 
-                    <form method="POST" action="{{ route('register') }}" class="border p-4 shadow bg-body rounded">
+                    <form method="POST" action="{{ route('register') }}" class="border p-4 shadow bg-body rounded" enctype="multipart/form-data">
                         @csrf
 
                         <!-- First Row -->

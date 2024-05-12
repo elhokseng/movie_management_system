@@ -23,8 +23,10 @@
                     </div>
                     <div class="mb-3">
                         <label for="movieTitle" class="form-label">Title</label>
-                        <input name="title" type="text" class="form-control" id="movieTitle"
-                            placeholder="Enter movie title">
+                        <input name="title" type="text" class="form-control" id="movieTitle" placeholder="Enter movie title">
+                        @error('title')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="releaseDate" class="form-label">Release Date</label>

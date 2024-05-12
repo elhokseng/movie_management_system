@@ -82,7 +82,7 @@
                                 <img src="{{ $movie->poster_url }}" class="card-img-top" alt="Movie Poster">
                             </a> <!-- Close anchor tag -->
                             <div class="card-body">
-                                <p class="card-text">
+                                <p class="card-text">   
                                     {{ $movie->release_date }}
                                     <span class="btn btn-sm btn-secondary">{{ $movie->genre->name ?? null }}</span>
                                 </p>

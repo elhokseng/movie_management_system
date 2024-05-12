@@ -23,8 +23,8 @@
         <nav class="col-md-6 col-lg-2 d-md-block sidebar position-fixed bg-color">
             <div class="position-sticky pt-3">
               <ul class="nav flex-column">
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="{{ URL::route('dashboard.index') }}"
+                 <li class="nav-item">
+                  <a class="nav-link text-white" href=""
                     onclick="showContent('dashboard')">
                     Dashboard
                   </a>
@@ -41,20 +41,6 @@
                   <a class="nav-link text-white" href="{{ URL::route('movie.index') }}"
                     onclick="showContent('movie')">
                     Movie
-                  </a>
-                </li>
-
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="#"
-                    onclick="showContent('booking')">
-                    Booking
-                  </a>
-                </li>
-                
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="{{URL::route('subscription-plans.index')}}"
-                    onclick="showContent('Subscription')">
-                    Subscription Plans
                   </a>
                 </li>
             </div>

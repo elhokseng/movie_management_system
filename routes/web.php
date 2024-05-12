@@ -1,13 +1,16 @@
 <?php
 
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\SeatController as BackendSeatController;
 use App\Http\Controllers\dashboardController as ControllersDashboardController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SeatController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SubscriptionPlanController;
+
 
 use App\Models\Movie;
 use App\Models\User;
@@ -29,16 +32,8 @@ Route::get('/', [ControllersDashboardController::class, 'index'])
 Route::get('/view/{id}/show', [ControllersDashboardController::class, 'show'])
     ->name('view.show');
 
-Route::get('/dashboard', function () {
-    $totalMovies = Movie::count();
-    $totalUsers = User::count();
-    $newUserThreshold = Carbon::now()->subDays(30);
-    $newUsersCount = User::where('created_at', '>=', $newUserThreshold)->count();
-    return view('backend.dashboard.admin', 
-    compact('totalMovies',
-            'totalUsers',
-            'newUsersCount'));
-})->middleware(['auth', 'verified'])->name('dashboard.index');
+Route::get('/home', [HomeController::class, 'index'])
+    ->middleware('auth')->name('home');  
 
 Route::get('/movie/index', [MovieController::class, 'index'])->name('movie.index');
 Route::get('/movie/create', [MovieController::class, 'create'])->name('movie.create');
@@ -54,9 +49,6 @@ Route::get('/genres/{id}/', [GenreController::class, 'edit'])->name('genres.edit
 Route::get('/genres/{id}/show', [GenreController::class, 'show'])->name('genres.show');
 Route::post('/genres', [GenreController::class, 'store'])->name('genres.store');
 Route::post('/genres/{id}', [GenreController::class, 'destroy'])->name('genres.destroy');
-
-
-Route::resource('subscription-plans', SubscriptionPlanController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

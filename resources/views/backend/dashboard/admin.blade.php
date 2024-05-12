@@ -11,7 +11,7 @@
                         <div class="card-body ">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="ms-3">
-                                    <h4 class=" mb-2"> {{ $totalUsers }} </h4>
+                                    {{-- <h4 class=" mb-2"> {{ $totalUsers }} </h4> --}}
                                     <p class="text-muted mb-0">Total Users</p>
                                 </div>
                                 <div class="icon fs-1 rounded-circle">
@@ -27,7 +27,7 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="ms-3">
-                                    <h4 class=" mb-2"> {{ $newUsersCount }} </h4>
+                                    {{-- <h4 class=" mb-2"> {{ $newUsersCount }} </h4> --}}
                                     <p class="text-muted mb-0">New Users</p>
                                 </div>
                                 <div class="icon fs-1 rounded-circle">
@@ -76,7 +76,7 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="ms-3">
                                     <h4 class=" mb-2">
-                                        {{$totalMovies}}
+                                        {{-- {{$totalMovies}} --}}
                                     </h4>
                                     <p class="mb-0 text-muted">Total Movies</p>
                                 </div>

@@ -30,15 +30,17 @@ class MovieController extends Controller
             'synopsis' => 'required',
             'genre_id' => 'nullable|exists:genres,id'
         ]);
-
+    
+        // Handle file upload
         if ($request->hasFile('poster_url')) {
             $fileName = time() . '.' . $request->poster_url->extension();
             $request->poster_url->move(public_path('uploads'), $fileName);
             $validated['poster_url'] = 'uploads/' . $fileName;
         }
-
-        Movie::create($validated);
-
+    
+        // Create the movie
+        $movie = Movie::create($validated);
+    
         return redirect()->route('movie.index')->with('success', 'Movie has been created successfully!');
     }
 

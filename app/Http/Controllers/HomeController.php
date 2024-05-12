@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Movie;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -18,9 +20,10 @@ class HomeController extends Controller
             {
                 return view('backend.dashboard.admin');
                 
-            }else
+            }else if($usertype == 'user')
             {
-                return view('dashboard');
+                $movies = Movie::all();
+                return view('dashboard', compact('movies'));
             
             }
         }
