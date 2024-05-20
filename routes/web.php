@@ -25,16 +25,14 @@ use Carbon\Carbon;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', [ControllersDashboardController::class, 'index'])
     ->name('dashboard');
 
 Route::get('/view/{id}/show', [ControllersDashboardController::class, 'show'])
     ->name('view.show');
-
 Route::get('/home', [HomeController::class, 'index'])
     ->middleware('auth')->name('home');  
-
+    
 Route::get('/movie/index', [MovieController::class, 'index'])->name('movie.index');
 Route::get('/movie/create', [MovieController::class, 'create'])->name('movie.create');
 Route::post('/movie', [MovieController::class, 'store'])->name('movie.store');

@@ -2,29 +2,24 @@
 @include('layouts.navigation')
 @include('layouts.leftsidebar')
 @section('main')
-    <div class="content">
-        <div class="box_wrapper">
-            <div class="box_body">
-                <div class="movie_card" id="tomb">
-                    <div class="info_section">
-                        <div class="movie_header">
-                            <img class="locandina" src="{{ asset($movies->poster_url) }}" />
-                            <h1> {{$movies->title}} </h1>
-                            <h4>2018, Roar Uthaug</h4>      
-                            <span class="minutes">{{$movies->duration}}</span>
-                            <p class="type"> {{$movies->genre->name}} </p>
-                        </div>
-                        <div class="movie_desc">
-                            <p class="text">
-                                {{$movies->synopsis}}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="blur_back tomb_back"></div>
-                </div>
+<div class="content">
+    <div class="box_wrapper">
+        <div class="box_body">
+            <div class="movie_card" id="tomb">
+                <div class="info_section">
+                    <iframe width="320" height="240"
+                            src="{{$movies->movie_url}}"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>  
             </div>
         </div>
-    </div>   
+    </div>
+</div>
+
+</div>
 
 @endsection
 

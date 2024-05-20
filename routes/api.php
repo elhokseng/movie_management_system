@@ -1,7 +1,12 @@
 <?php
 
+use App\Http\Controllers\GenreController;
+use App\Http\Controllers\MovieController;
+use App\Models\Genre;
+use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +22,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/genre' ,[GenreController::class, 'index']);
+Route::get('/movie' ,[MovieController::class, 'index']);

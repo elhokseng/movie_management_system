@@ -11,6 +11,7 @@ class GenreController extends Controller
     {
         $genres = Genre::all();
         return view('backend.Genres.list', ['genres' => $genres]);
+        // return response(['data' => $genres]);
     }
 
     public function create()    

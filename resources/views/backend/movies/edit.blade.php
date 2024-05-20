@@ -28,6 +28,12 @@
                             placeholder="Enter movies title" value="{{ $movies->title }}">
                     </div>
                     <div class="mb-3">
+                        <label for="movie_url" class="form-label">Movie URL</label>
+                        <input name="movie_url" type="url" class="form-control" id="movie_url" placeholder="Movie URL" value="{{ old('movie_url', $movies->movie_url) }}">
+                    </div>
+                    
+                    
+                    <div class="mb-3">
                         <label for="releaseDate" class="form-label">Release Date</label>
                         <input name="release_date" type="date" class="form-control" id="releaseDate" value="{{ $movies->release_date }}">
                     </div>

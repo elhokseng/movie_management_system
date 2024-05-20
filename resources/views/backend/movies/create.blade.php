@@ -21,12 +21,16 @@
                         <label for="movieImage" class="form-label">Movie Image</label>
                         <input name="poster_url" class="form-control" type="file" id="movieImage">
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3">  
                         <label for="movieTitle" class="form-label">Title</label>
                         <input name="title" type="text" class="form-control" id="movieTitle" placeholder="Enter movie title">
                         @error('title')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="movie_url" class="form-label">Movie URL</label>
+                        <input name="movie_url" type="url" class="form-control" id="movie_url" placeholder="Movie URL">
                     </div>
                     <div class="mb-3">
                         <label for="releaseDate" class="form-label">Release Date</label>
