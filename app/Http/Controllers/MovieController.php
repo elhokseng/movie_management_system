@@ -100,7 +100,7 @@ class MovieController extends Controller
             return response()->json(['message' => 'Movie has been updated successfully!', 'movies' => $movies]);
         }
 
-        return redirect()->route('backend.movies.index')->with('success', 'Movie has been updated successfully!');
+        return redirect()->route('movie.index')->with('success', 'Movie has been updated successfully!');
     }
 
     public function destroy(Request $request, $id)
@@ -115,6 +115,6 @@ class MovieController extends Controller
             return response()->json(['message' => 'Movie has been deleted successfully!']);
         }
 
-        return redirect()->route('movies.index')->with('success', 'Movie has been deleted successfully!');
+        return redirect()->route('movie.index')->with('success', 'Movie has been deleted successfully!');
     }
 }
