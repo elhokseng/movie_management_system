@@ -19,9 +19,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
-Route::get('/genre' ,[GenreController::class, 'index']);
-Route::get('/movie' ,[MovieController::class, 'index']);
+// Movie routes
+Route::get('/movies', [MovieController::class, 'index']);
+Route::get('/movies/{id}', [MovieController::class, 'show']);
+Route::post('/movies', [MovieController::class, 'store']);
+Route::put('/movies/{id}', [MovieController::class, 'update']);
+Route::delete('/movies/{id}', [MovieController::class, 'destroy']);
+
+// Genre routes
+Route::get('/genres', [GenreController::class, 'index']);
+Route::post('/genres', [GenreController::class, 'store']);
+Route::get('/genres/{id}', [GenreController::class, 'show']);
+Route::put('/genres/{id}', [GenreController::class, 'update']);
+Route::delete('/genres/{id}', [GenreController::class, 'destroy']); 

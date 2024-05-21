@@ -18,13 +18,10 @@
         </div>
     </div>
 </div>
-
-</div>
-
 @endsection
 
 <script type="text/javascript">
-    var seats=document.getElementsByTagName("td");
+    var seats=document.getElementsByTagName("td");  
     console.log(seats);
     function clicked(e)
     {
@@ -36,7 +33,6 @@
     for(var i=0;i<seats.length;i++)
     {
         seats[i].addEventListener("click",clicked);
-            
     }
     
 </script>
@@ -48,7 +44,7 @@
 
 
     ul.seat_w3ls {
-        margin: 2em 0;
+        margin: 2em 0;      
     }
     
     .screen {
