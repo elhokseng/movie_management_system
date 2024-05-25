@@ -57,7 +57,7 @@ class MovieController extends Controller
         $movies = Movie::with('genre')->findOrFail($id);
 
         if ($request->expectsJson()) {
-            return response()->json($movie);
+            return response()->json($movies);
         }
 
         return view('backend.movies.view', compact('movies'));
