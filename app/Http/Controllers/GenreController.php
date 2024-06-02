@@ -10,12 +10,13 @@ class GenreController extends Controller
     public function index()
     {
         $genres = Genre::all();
-        return response()->json($genres);
+        return view('backend.Genres.list' ,compact('genres'));
     }
 
     public function create()
     {
-        // This method is not needed for the API
+        
+        return view('backend.movies.create');
     }
 
     public function store(Request $request)
@@ -37,7 +38,7 @@ class GenreController extends Controller
         if (!$genre) {
             return response()->json(['error' => 'Genre not found'], 404);
         }
-        return response()->json($genre);
+        return view('backend.Genres.view' ,compact('genre'));
     }
 
     public function update(Request $request, $id)
