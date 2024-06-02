@@ -4,20 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Genre;
-use App\Models\Movie;
 
 class GenreController extends Controller
 {
     public function index()
     {
         $genres = Genre::all();
-        return view('backend.Genres.list' ,compact('genres'));
+        return view('backend.Genres.list', compact('genres'));
     }
 
     public function create()
     {
-        
-        return view('backend.movies.create');
+        return view('backend.Genres.create');
     }
 
     public function store(Request $request)
@@ -26,18 +24,9 @@ class GenreController extends Controller
             'name' => 'required|string|max:255',
         ]);
 
-        $genre = Genre::create([
-            'name' => $request->name,
-        ]);
+        $genre = Genre::create($validated);
 
-        return response()->json(['message' => 'Genre created successfully', 'genre' => $genre], 201);
-    }
-
-    public function show($id)
-    {
-        // $movies = Movie::with('genre')->findOrFail($id);
-
-        // return view('backend.movies.view', compact('movies'));
+        return redirect()->route('genres.create')->with('success', 'Genre has been created successfully!');
     }
 
     public function update(Request $request, $id)
@@ -58,6 +47,6 @@ class GenreController extends Controller
         $genre = Genre::findOrFail($id);
         $genre->delete();
 
-        return response()->json(['message' => 'Genre deleted successfully']);
+        return redirect()->route('genre.list')->with('success', 'Genre has been delete successfully!');
     }
 }
