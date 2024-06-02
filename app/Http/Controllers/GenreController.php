@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Genre;
+use App\Models\Movie;
 
 class GenreController extends Controller
 {
@@ -34,11 +35,9 @@ class GenreController extends Controller
 
     public function show($id)
     {
-        $genre = Genre::with('movies')->find($id);
-        if (!$genre) {
-            return response()->json(['error' => 'Genre not found'], 404);
-        }
-        return view('backend.Genres.view' ,compact('genre'));
+        // $movies = Movie::with('genre')->findOrFail($id);
+
+        // return view('backend.movies.view', compact('movies'));
     }
 
     public function update(Request $request, $id)
