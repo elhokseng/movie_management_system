@@ -46,11 +46,9 @@ class MovieController extends Controller
 
         $movie = Movie::create($validated);
 
-        if ($request->expectsJson()) {
-            return response()->json(['message' => 'Movie has been created successfully!', 'movie' => $movie], 201);
-        }
+        return response()->json(['message' => 'Movie has been created successfully!', 'movie' => $movie], 201);
 
-        return redirect()->route('movie.index')->with('success', 'Movie has been created successfully!');
+        // return redirect()->route('movie.index')->with('success', 'Movie has been created successfully!');
     }
 
     public function show(Request $request, $id)
