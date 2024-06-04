@@ -16,8 +16,8 @@ class MovieController extends Controller
             return response()->json($movies);
         }
 
-        return view('backend.movies.list', compact('movies'));
-        // return response()->json($movies);   
+        // return view('backend.movies.list', compact('movies'));
+        return response()->json($movies);   
     }
 
     public function create()
@@ -46,9 +46,11 @@ class MovieController extends Controller
 
         $movie = Movie::create($validated);
 
-        return response()->json(['message' => 'Movie has been created successfully!', 'movie' => $movie], 201);
+        if ($request->expectsJson()) {
+            return response()->json(['message' => 'Movie has been created successfully!', 'movie' => $movie], 201);
+        }
 
-        // return redirect()->route('movie.index')->with('success', 'Movie has been created successfully!');
+        return redirect()->route('movie.index')->with('success', 'Movie has been created successfully!');
     }
 
     public function show(Request $request, $id)
