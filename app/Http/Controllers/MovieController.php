@@ -16,8 +16,8 @@ class MovieController extends Controller
             return response()->json($movies);
         }
 
-        // return view('backend.movies.list', compact('movies'));
-        return response()->json($movies);   
+        return view('backend.movies.list', compact('movies'));
+        // return response()->json($movies);   
     }
 
     public function create()
