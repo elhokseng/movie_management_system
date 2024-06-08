@@ -15,7 +15,7 @@
                             <option selected>Choose Genres</option> 
                             @foreach ($genres as $genre)
                                 <option value="{{ $genre->id }}" {{ $genre->id == $movies->genre_id ? 'selected' : '' }}>{{ $genre->name }}</option>
-                            @endforeach
+                            @endforeach 
                         </select>
                     </div>
                     <div class="mb-3">

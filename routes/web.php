@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\SeatController as BackendSeatController;
 use App\Http\Controllers\dashboardController as ControllersDashboardController;
+use App\Http\Controllers\DashboardController as HttpControllersDashboardController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
@@ -28,10 +29,14 @@ use Carbon\Carbon;
 // Route::get('/', [ControllersDashboardController::class, 'index'])
 //     ->name('dashboard');
 
-// Route::get('/view/{id}/show', [ControllersDashboardController::class, 'show'])
-//     ->name('view.show');
+Route::get('/view/{id}/show', [ControllersDashboardController::class, 'show'])
+    ->name('view.show');
+
 Route::get('/home', [HomeController::class, 'index'])
     ->middleware('auth')->name('home');  
+
+Route::get('/dashboard/index', [HttpControllersDashboardController::class, 'index'])
+    ->name('dashboard.index');
     
 Route::get('/movie/index', [MovieController::class, 'index'])->name('movie.index');
 Route::get('/movie/create', [MovieController::class, 'create'])->name('movie.create');

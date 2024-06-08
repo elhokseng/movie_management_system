@@ -24,11 +24,11 @@
             <div class="position-sticky pt-3">
               <ul class="nav flex-column">
                  <li class="nav-item">
-                  <a class="nav-link text-white" href=""
+                  <a class="nav-link text-white" href="{{ URL::route('dashboard.index') }}"
                     onclick="showContent('dashboard')">
                     Dashboard
                   </a>
-                </li>
+                </li> 
 
                 <li class="nav-item">
                   <a class="nav-link text-white" href="{{ URL::route('genres.list') }}"

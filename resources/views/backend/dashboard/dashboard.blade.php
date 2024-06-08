@@ -1,4 +1,4 @@
-@extends('layouts.app')
+    @extends('layouts.app')
 @include('layouts.navigation')
 @include('layouts.leftsidebar')
 @section('main')
@@ -12,7 +12,7 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="ms-3">
                                     <h4 class="text-muted mb-2">0</h4>
-                                    <p class="mb-0">Total Users</p>
+                                    <p class="mb-0">Total Views</p>
                                 </div>
                                 <div class="icon fs-1 rounded-circle">
                                     <i class="fa-regular fa-user"></i>
@@ -27,10 +27,10 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="ms-3">
-                                    <h4 class="text-muted mb-2">0</h4>
-                                    <p class="mb-0">New Users</p>
+                                    <h4 class="text-muted mb-2">{{$totalMovies}}</h4>
+                                    <p class="mb-0">Total Movies</p>
                                 </div>
-                                <div> {{$totalMovie}} </div>
+                                <div>  </div>
                                 <div class="icon fs-1 rounded-circle">
                                     <i class="fa-regular fa-user"></i>
                                 </div>
@@ -77,8 +77,8 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="ms-3">
-                                    <h4 class="text-muted mb-2"> {{ $totalMovies }} </h4>
-                                    <p class="mb-0">Total Movies</p>
+                                    <h4 class="text-muted mb-2"> 0</h4>
+                                    <p class="mb-0">Total Users</p>
                                 </div>
                                 <div class="icon fs-1 rounded-circle">
                                     <i class="fa-regular fa-user"></i>
