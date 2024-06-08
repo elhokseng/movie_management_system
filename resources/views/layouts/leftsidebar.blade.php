@@ -38,7 +38,7 @@
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link text-white" href="{{ URL::route('movie.index') }}"
+                  <a class="nav-link text-white" href="{{ URL::route('movie.create') }}"
                     onclick="showContent('movie')">
                     Movie
                   </a>
