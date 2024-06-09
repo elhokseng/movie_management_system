@@ -10,14 +10,10 @@ class MovieController extends Controller
 {
     public function index(Request $request)
     {
-        $movies = Movie::with('genre')->get();
+        $movies = Movie::with('genre')->get();  
 
-        if ($request->expectsJson()) {
-            return response()->json($movies);
-        }
-
-        // return view('backend.movies.list', compact('movies'));
-        return response()->json($movies);   
+        return view('backend.movies.list', compact('movies'));
+        // return response()->json($movies);   
     }
 
     public function create()
@@ -50,16 +46,13 @@ class MovieController extends Controller
             return response()->json(['message' => 'Movie has been created successfully!', 'movie' => $movie], 201);
         }
 
-        return redirect()->route('movie.index')->with('success', 'Movie has been created successfully!');
+        return redirect()->route('movie.create')->with('success', 'Movie has been created successfully!');
     }
 
     public function show(Request $request, $id)
     {
         $movies = Movie::with('genre')->findOrFail($id);
 
-        if ($request->expectsJson()) {
-            return response()->json($movies);
-        }
 
         return view('backend.movies.view', compact('movies'));
     }
