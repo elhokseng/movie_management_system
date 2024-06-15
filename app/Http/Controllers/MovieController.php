@@ -12,8 +12,8 @@ class MovieController extends Controller
     {
         $movies = Movie::with('genre')->get();  
 
-        return view('backend.movies.list', compact('movies'));
-        // return response()->json($movies);      
+        // return view('backend.movies.list', compact('movies'));
+        return response()->json($movies);      
     }
 
     public function create()
