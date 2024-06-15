@@ -12,8 +12,8 @@ class MovieController extends Controller
     {
         $movies = Movie::with('genre')->get();  
 
-        // return view('backend.movies.list', compact('movies'));
-        return response()->json($movies);   
+        return view('backend.movies.list', compact('movies'));
+        // return response()->json($movies);      
     }
 
     public function create()
@@ -52,9 +52,10 @@ class MovieController extends Controller
     public function show(Request $request, $id)
     {
         $movies = Movie::with('genre')->findOrFail($id);
+        $movie  = Movie::with('genre')->get(); 
 
-
-        return view('backend.movies.view', compact('movies'));
+        return response()->json($movie);
+        // return view('backend.movies.view', compact('movies'));
     }
 
     public function edit($id)
