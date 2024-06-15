@@ -19,18 +19,20 @@
                     <table class="table">
                         <thead class="thead-dark">
                             <tr>
-                                <th>Title</th>
-                                <th>Release Date</th>
-                                <th>Duration (minutes)</th>
-                                <th>Synopsis</th>
-                                <th>Genre</th>
-                                <th>Poster</th>
-                                <th>Actions</th>
+                                <th width="5%">#</th>
+                                <th width="10%">Title</th>
+                                <th width="10%">Release Date</th>
+                                <th width="5%">Duration (minutes)</th>
+                                <th width="15%">Synopsis</th>
+                                <th width="10%">Genre</th>
+                                <th width="10%">Poster</th>
+                                <th width="10%">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($movies as $movie)
                                 <tr>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $movie->title }}</td>
                                     <td>{{ $movie->release_date }}</td>
                                     <td>{{ $movie->duration }}</td>
