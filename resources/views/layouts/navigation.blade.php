@@ -7,15 +7,15 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <a class="navbar-brand" href="#">
-                <img src="" height="15"
-                    alt="MDB Logo" loading="lazy" />
+                <img src="/logo/logo.jpg" height="30" width="30"
+                    alt="DMSB Logo" loading="lazy" />
             </a>
 
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                         <span class="fs-5 text-white">
-                            Movie of Cambodia
+                            DMSB
                         </span>
                     </a>
                 </li>
