@@ -29,9 +29,9 @@ use Carbon\Carbon;
 // Route::get('/', [ControllersDashboardController::class, 'index'])
 //     ->name('dashboard');
 
-Route::get('/view/{id}/show', [ControllersDashboardController::class, 'show'])
-    ->name('view.show');
-
+//Route::get('/view/{id}/show', [ControllersDashboardController::class, 'show'])
+//    ->name('view.show');
+//
 Route::get('/', [HomeController::class, 'index'])
     ->middleware('auth')->name('home');  
 
