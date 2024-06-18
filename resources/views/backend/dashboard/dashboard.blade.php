@@ -3,7 +3,7 @@
 @include('layouts.leftsidebar')
 @section('main')
     <div class="content">
-        <h4 class="mt-3 mb-4">Dashboard Home</h4>
+        <h4 class="mt-3 mb-4">Dashboard</h4>
         <div class="row">
             <div class="row">
                 <div class="col-md-4 mb-4">
