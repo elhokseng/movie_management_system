@@ -23,8 +23,9 @@ class HomeController extends Controller
             }
             else if($usertype == 'user')
             {
-                $movies = Movie::all();
-                return view('dashboard', compact('movies'));
+                // $movies = Movie::all();
+                // return view('dashboard', compact('movies'));
+                return view('backend.dashboard.admin');
             
             }
         }
