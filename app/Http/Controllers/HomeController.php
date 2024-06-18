@@ -18,14 +18,14 @@ class HomeController extends Controller
 
             if($usertype == 'admin')
             {
-                return view('backend.dashboard.admin');
+                return view('backend.dashboard.dashboard');
                 
             }
             else if($usertype == 'user')
             {
                 // $movies = Movie::all();
                 // return view('dashboard', compact('movies'));
-                return view('backend.dashboard.admin');
+                return view('backend.dashboard.dashboard');
             
             }
         }
