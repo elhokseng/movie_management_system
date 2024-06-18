@@ -20,12 +20,13 @@ class HomeController extends Controller
             {
                 return view('backend.dashboard.admin');
                 
-            }else if($usertype == 'user')
-            {
-                $movies = Movie::all();
-                return view('dashboard', compact('movies'));
-            
             }
+            // else if($usertype == 'user')
+            // {
+            //     $movies = Movie::all();
+            //     return view('dashboard', compact('movies'));
+            
+            // }
         }
     }
 }
