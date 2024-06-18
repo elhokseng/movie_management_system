@@ -27,7 +27,7 @@ class HomeController extends Controller
                     ->get();
 
                 // Attach genre names to the count data
-                $moviesPerGenre = $moviesPerGenre->map(function($item) {
+                    $moviesPerGenre = $moviesPerGenre->map(function($item) {
                     $item->genre_name = Genre::find($item->genre_id)->name;
                     return $item;
                 });
