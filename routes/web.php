@@ -51,7 +51,7 @@ Route::get('/genres/create', [GenreController::class, 'create'])->name  ('genres
 Route::get('/genres/{id}/', [GenreController::class, 'edit'])->name('genres.edit');
 Route::get('/genres/{id}/show', [GenreController::class, 'show'])->name('genres.show');
 Route::post('/genres', [GenreController::class, 'store'])->name('genres.store');
-Route::post('/genres/{id}', [GenreController::class, 'destroy'])->name('genres.destroy');
+Route::delete('/genres/{id}', [GenreController::class, 'destroy'])->name('genres.destroy');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -62,6 +62,6 @@ class GenreController extends Controller
         $genre = Genre::findOrFail($id);
         $genre->delete();
 
-        return redirect()->route('genre.list')->with('success', 'Genre has been delete successfully!');
+        return redirect()->route('genres.list')->with('success', 'Genre has been delete successfully!');
     }
 }
