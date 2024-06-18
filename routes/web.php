@@ -32,7 +32,7 @@ use Carbon\Carbon;
 //Route::get('/view/{id}/show', [ControllersDashboardController::class, 'show'])
 //    ->name('view.show');
 //
-Route::get('/', [HomeController::class, 'index'])
+Route::get('/dashboard/index', [HomeController::class, 'index'])
     ->middleware('auth')->name('home');  
 
 Route::get('/dashboard/index', [HttpControllersDashboardController::class, 'index'])
